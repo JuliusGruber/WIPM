@@ -1,0 +1,100 @@
+[debug] [2018-06-29T09:30:45.407Z] ----------------------------------------------------------------------
+[debug] [2018-06-29T09:30:45.409Z] Command:       /usr/local/bin/node /usr/local/bin/firebase deploy
+[debug] [2018-06-29T09:30:45.409Z] CLI Version:   3.18.4
+[debug] [2018-06-29T09:30:45.409Z] Platform:      darwin
+[debug] [2018-06-29T09:30:45.409Z] Node Version:  v9.11.2
+[debug] [2018-06-29T09:30:45.411Z] Time:          Fri Jun 29 2018 10:30:45 GMT+0100 (WEST)
+[debug] [2018-06-29T09:30:45.411Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-06-29T09:30:45.431Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-06-29T09:30:45.431Z] > authorizing via signed-in user
+[debug] [2018-06-29T09:30:45.433Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/wipm-2b676  
+  
+ Fri Jun 29 2018 10:30:45 GMT+0100 (WEST)
+[debug] [2018-06-29T09:30:46.304Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-29T09:30:46.305Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/wipm-2b676/tokens  
+  
+ Fri Jun 29 2018 10:30:46 GMT+0100 (WEST)
+[debug] [2018-06-29T09:30:47.034Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'wipm-2b676'...
+[info] 
+[info] i  deploying functions, hosting
+[info] Running command: npm --prefix "$RESOURCE_DIR" run build
+[info] ✔  functions: Finished running predeploy script.
+[debug] [2018-06-29T09:30:55.284Z] > [functions] package.json contents: {
+  "name": "functions",
+  "scripts": {
+    "build": "tsc",
+    "serve": "npm run build && firebase serve --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "firebase-admin": "~5.12.0",
+    "firebase-functions": "^1.0.1"
+  },
+  "devDependencies": {
+    "typescript": "^2.5.3"
+  },
+  "private": true
+}
+[info] i  functions: ensuring necessary APIs are enabled...
+[debug] [2018-06-29T09:30:55.286Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/cloudfunctions.googleapis.com/projectSettings/wipm-2b676?view=CONSUMER_VIEW  
+  
+ Fri Jun 29 2018 10:30:55 GMT+0100 (WEST)
+[debug] [2018-06-29T09:30:55.286Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/runtimeconfig.googleapis.com/projectSettings/wipm-2b676?view=CONSUMER_VIEW  
+  
+ Fri Jun 29 2018 10:30:55 GMT+0100 (WEST)
+[debug] [2018-06-29T09:30:56.702Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-29T09:30:56.761Z] <<< HTTP RESPONSE 200
+[info] ✔  functions: all necessary APIs are enabled
+[debug] [2018-06-29T09:30:56.763Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/wipm-2b676  
+  
+ Fri Jun 29 2018 10:30:56 GMT+0100 (WEST)
+[debug] [2018-06-29T09:30:57.706Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-29T09:30:57.707Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/631242372799:getServerAppConfig  
+  
+ Fri Jun 29 2018 10:30:57 GMT+0100 (WEST)
+[debug] [2018-06-29T09:30:58.320Z] <<< HTTP RESPONSE 200
+[info] i  functions: preparing functions directory for uploading...
+[debug] [2018-06-29T09:30:58.326Z] >>> HTTP REQUEST GET https://runtimeconfig.googleapis.com/v1beta1/projects/wipm-2b676/configs  
+  
+ Fri Jun 29 2018 10:30:58 GMT+0100 (WEST)
+[debug] [2018-06-29T09:30:58.678Z] <<< HTTP RESPONSE 200
+[info] i  functions: packaged functions (42.3 KB) for uploading
+[debug] [2018-06-29T09:30:58.962Z] >>> HTTP REQUEST POST https://cloudfunctions.googleapis.com/v1/projects/wipm-2b676/locations/us-central1/functions:generateUploadUrl  
+  
+ Fri Jun 29 2018 10:30:58 GMT+0100 (WEST)
+[debug] [2018-06-29T09:31:29.245Z] <<< HTTP RESPONSE 503
+[debug] [2018-06-29T09:31:29.246Z] <<< HTTP RESPONSE BODY {
+  "error": {
+    "code": 503,
+    "message": "The service is currently unavailable.",
+    "status": "UNAVAILABLE"
+  }
+}
+
+[debug] [2018-06-29T09:31:29.250Z] TypeError: Cannot create property 'error' on string '{
+  "error": {
+    "code": 503,
+    "message": "The service is currently unavailable.",
+    "status": "UNAVAILABLE"
+  }
+}
+'
+    at module.exports (/usr/local/lib/node_modules/firebase-tools/lib/responseToError.js:11:16)
+    at Request._callback (/usr/local/lib/node_modules/firebase-tools/lib/api.js:47:25)
+    at Request.self.callback (/usr/local/lib/node_modules/firebase-tools/node_modules/request/request.js:186:22)
+    at Request.emit (events.js:180:13)
+    at Request.emit (domain.js:422:20)
+    at Request.<anonymous> (/usr/local/lib/node_modules/firebase-tools/node_modules/request/request.js:1163:10)
+    at Request.emit (events.js:180:13)
+    at Request.emit (domain.js:422:20)
+    at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/firebase-tools/node_modules/request/request.js:1085:12)
+    at Object.onceWrapper (events.js:272:13)
+[error] 
+[error] Error: An unexpected error has occurred.

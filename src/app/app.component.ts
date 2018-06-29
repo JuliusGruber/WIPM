@@ -7,11 +7,14 @@ import { TwitterService } from './services/twitter.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'app';
+  title = 'WIPM';
+  tweets$;
 
   constructor(private twitterService: TwitterService) {}
 
-  ngOnInit(): void {
-    this.twitterService.getAuthToken().subscribe(console.log);
+  ngOnInit(): void {}
+
+  getTweets() {
+    this.tweets$ = this.twitterService.getTweets('Spain');
   }
 }
