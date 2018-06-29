@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TwitterService } from './services/twitter.service';
-import { from, Observable } from 'rxjs';
+import { from, Observable, of, concat } from 'rxjs';
 import { filter, flatMap, scan, tap, map, startWith } from 'rxjs/operators';
 import { GoogleNLPService } from './services/google-nlp.service';
 import { TweetModel } from './models/tweet.model';
@@ -23,7 +23,9 @@ export class AppComponent implements OnInit {
     private languageService: GoogleNLPService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.overallScore$ = of(1);
+  }
 
   getTweets(searchTerm: string) {
     this.tweets$ = this.twitterService.getTweets(searchTerm).pipe(
@@ -40,9 +42,14 @@ export class AppComponent implements OnInit {
       map(arr => arr.filter(el => el.res.documentSentiment.score < 0))
     );
 
-    this.overallScore$ = this.tweets$.pipe(
-      map(arr => arr.map(el => Math.abs(el.res.documentSentiment.score) * 100)),
-      map(arr => arr.reduce((acc, cur) => acc + cur, 0) / arr.length)
+    this.overallScore$ = concat(
+      of(1),
+      this.tweets$.pipe(
+        map(arr =>
+          arr.map(el => Math.abs(el.res.documentSentiment.score) * 100)
+        ),
+        map(arr => arr.reduce((acc, cur) => acc + cur, 0) / arr.length)
+      )
     );
   }
 }
