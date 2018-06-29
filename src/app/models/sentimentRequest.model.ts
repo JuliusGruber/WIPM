@@ -1,6 +1,6 @@
 
 export interface SentimentRequestModel {
- document: {content: string, type: string,  };
+ document: {content: string, type: string, language: string  };
   encodingType: string;
 
 }

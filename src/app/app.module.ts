@@ -7,11 +7,12 @@ import { TwitterService } from './services/twitter.service';
 import { InputComponent } from './input/input.component';
 import {WIPMMaterialModule} from './wipm-material.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {GoogleNLPService} from './services/google-nlp.service';
 
 @NgModule({
   declarations: [AppComponent, InputComponent],
   imports: [BrowserModule, HttpClientModule, WIPMMaterialModule, BrowserAnimationsModule],
-  providers: [TwitterService],
+  providers: [TwitterService, GoogleNLPService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { TwitterService } from './services/twitter.service';
-import {Observable} from 'rxjs';
+import {from, Observable} from 'rxjs';
 import TweetModel = namespace.TweetModel;
+import {flatMap, scan} from 'rxjs/operators';
+import {GoogleNLPService} from './services/google-nlp.service';
 
 @Component({
   selector: 'app-root',
@@ -10,13 +12,18 @@ import TweetModel = namespace.TweetModel;
 })
 export class AppComponent implements OnInit {
   title = 'WIPM';
-  tweets$: Observable<TweetModel>;
+  tweets$: Observable<TweetModel[]>;
 
-  constructor(private twitterService: TwitterService) {}
+  constructor(private twitterService: TwitterService, private languageService: GoogleNLPService) {}
 
   ngOnInit(): void {}
 
   getTweets(searchTerm: string) {
-    this.tweets$ = this.twitterService.getTweets(searchTerm);
+    this.tweets$ = this.twitterService.getTweets(searchTerm).pipe(
+      flatMap(arrayValue => from(arrayValue) ),
+      flatMap(singleTweet => this.languageService.analyzeTweet(singleTweet.text)),
+      scan((tweetsList, tweet) => [...tweetsList, tweet] , [] )
+
+    );
   }
 }
