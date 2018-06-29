@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-tweet-output-list',
@@ -6,13 +6,10 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./tweet-output-list.component.css']
 })
 export class TweetOutputListComponent implements OnInit {
-  @Input() tweetArray: Array<any>;
+  @Input() tweetArray: Array<any> = [];
   @Input() title: string;
 
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }
