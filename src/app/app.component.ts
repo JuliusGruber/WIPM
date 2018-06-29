@@ -32,12 +32,10 @@ export class AppComponent implements OnInit {
 
     this.positiveTweets$ = this.tweets$.pipe(
       map(arr => arr.filter(el => el.res.documentSentiment.score > 0))
-      // filter(({ res }) => res.documentSentiment.score > 0)
     );
 
     this.neagativeTweets$ = this.tweets$.pipe(
       map(arr => arr.filter(el => el.res.documentSentiment.score < 0))
-      // filter(({ res }) => res.documentSentiment.score < 0)
     );
   }
 }
