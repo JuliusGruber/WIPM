@@ -1,7 +1,6 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div fxLayout="column" class="bigger">
-  <div fxLayoutAlign="start center"
-       fxLayout="row">
+  <div fxLayoutAlign="start center" fxLayout="row">
     <h1>
       Welcome to {{ title }}!
     </h1>
@@ -10,15 +9,11 @@
 
   <app-input (textChanger)="getTweets($event)" fxLayout="row"> </app-input>
 
-  <mat-grid-list cols="2" fxLayout="row">
-    <mat-grid-tile>
-      <app-tweet-output-list title="Positive Tweets" [tweetArray]="positiveTweets$ | async">
-      </app-tweet-output-list>
-    </mat-grid-tile>
+  <div fxLayout="row">
+    <app-tweet-output-list title="Positive Tweets" [tweetArray]="positiveTweets$ | async">
+    </app-tweet-output-list>
 
-    <mat-grid-tile>
-      <app-tweet-output-list title="Negative Tweets" [tweetArray]="neagativeTweets$ | async">
-      </app-tweet-output-list>
-    </mat-grid-tile>
-  </mat-grid-list>
+    <app-tweet-output-list title="Negative Tweets" [tweetArray]="neagativeTweets$ | async">
+    </app-tweet-output-list>
+  </div>
 </div>
