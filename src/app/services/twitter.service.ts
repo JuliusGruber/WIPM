@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import TweetModel = namespace.TweetModel;
-import {Observable} from 'rxjs';
+import { Observable } from 'rxjs';
+import { TweetModel } from '../models/tweet.model';
 
 @Injectable()
 export class TwitterService {
@@ -21,7 +21,7 @@ export class TwitterService {
     );
   }
 
-  getTweets(text: string): Observable<TweetModel> {
+  getTweets(text: string): Observable<TweetModel[]> {
     if (!this.authToken) {
       console.error('No Auth token!!!');
       return;
