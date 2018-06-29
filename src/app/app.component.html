@@ -13,6 +13,21 @@
 
   <app-input (textChanger)="getTweets($event)" fxLayoutAlign="start center" fxLayout="column"> </app-input>
 
+  <div class="margin-top-20" fxLayoutAlign="start center" fxLayout="column">
+      <mwl-gauge
+      #gauge
+      [max]="100"
+      [dialStartAngle]="-90"
+      [dialEndAngle]="-90.001"
+      *ngIf="overallScore$ | async as score"
+      [value]="score"
+      [valueClass]="score < 50 ? 'gauge-red' : 'gauge-green'"
+      [animated]="true"
+      [animationDuration]="1"
+      >
+    </mwl-gauge>
+  </div>
+
   <div fxLayout="row" class="margin-top-20">
     <app-tweet-output-list title="Positive Tweets" fxFlex="grow" [tweetArray]="positiveTweets$ | async">
     </app-tweet-output-list>

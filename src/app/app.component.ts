@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TwitterService } from './services/twitter.service';
 import { from, Observable } from 'rxjs';
-import { filter, flatMap, scan, tap, map } from 'rxjs/operators';
+import { filter, flatMap, scan, tap, map, startWith } from 'rxjs/operators';
 import { GoogleNLPService } from './services/google-nlp.service';
 import { TweetModel } from './models/tweet.model';
 
@@ -15,6 +15,8 @@ export class AppComponent implements OnInit {
   tweets$: Observable<any>;
   positiveTweets$: Observable<any>;
   neagativeTweets$: Observable<any>;
+
+  overallScore$: Observable<number>;
 
   constructor(
     private twitterService: TwitterService,
@@ -36,6 +38,11 @@ export class AppComponent implements OnInit {
 
     this.neagativeTweets$ = this.tweets$.pipe(
       map(arr => arr.filter(el => el.res.documentSentiment.score < 0))
+    );
+
+    this.overallScore$ = this.tweets$.pipe(
+      map(arr => arr.map(el => Math.abs(el.res.documentSentiment.score) * 100)),
+      map(arr => arr.reduce((acc, cur) => acc + cur, 0) / arr.length)
     );
   }
 }

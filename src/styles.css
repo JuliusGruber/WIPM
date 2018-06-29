@@ -1,7 +1,47 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 /* @import "~@angular/material/prebuilt-themes/deeppurple-amber.css"; */
-
 /* @import "~@angular/material/prebuilt-themes/pink-bluegrey.css"; */
-
 /* @import "~@angular/material/prebuilt-themes/purple-green.css"; */
+
+mwl-gauge {
+  width: 150px;
+  height: 150px;
+  display: block;
+  padding: 10px;
+}
+
+mwl-gauge > .gauge > .dial {
+  stroke: #eee;
+  stroke-width: 2;
+  fill: rgba(0,0,0,0);
+}
+
+mwl-gauge > .gauge > .value {
+  stroke: rgb(47, 227, 255);
+  stroke-width: 2;
+  fill: rgba(0,0,0,0);
+}
+
+mwl-gauge > .gauge > .value-text {
+  fill: rgb(47, 227, 255);
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 1em;
+}
+
+.gauge-red {
+  fill: rgb(255, 47, 47);
+}
+
+.gauge-green {
+  fill: rgb(47, 255, 82);
+}
+
+.gauge-dial-red {
+  stroke: rgb(255, 47, 47);
+}
+
+.gauge-dial-green {
+  stroke: rgb(47, 255, 82);
+}

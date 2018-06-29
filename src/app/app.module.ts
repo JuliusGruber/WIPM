@@ -12,6 +12,8 @@ import { GoogleNLPService } from './services/google-nlp.service';
 import { TweetOutputListComponent } from './tweet-output-list/tweet-output-list.component';
 import { TweetCardComponent } from './tweet-card/tweet-card.component';
 
+import { GaugeModule } from 'angular-gauge';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +26,8 @@ import { TweetCardComponent } from './tweet-card/tweet-card.component';
     HttpClientModule,
     WIPMMaterialModule,
     BrowserAnimationsModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    GaugeModule.forRoot()
   ],
   providers: [TwitterService, GoogleNLPService],
   bootstrap: [AppComponent]
