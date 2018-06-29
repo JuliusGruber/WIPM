@@ -10,7 +10,7 @@
 
 <ul>
   <li *ngFor="let tweet of tweets$ | async">
-    {{ tweet.text }}
+    {{ tweet | json}}
   </li>
 </ul>
 

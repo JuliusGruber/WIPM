@@ -15,6 +15,6 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {}
 
   getTweets() {
-    this.tweets$ = this.twitterService.getTweets('Spain');
+    this.tweets$ = this.twitterService.getTweets('Trump');
   }
 }
