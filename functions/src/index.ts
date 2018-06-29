@@ -45,7 +45,7 @@ export const getTweets = functions.https.onRequest((request, response) => {
     console.log('Text: ', text);
 
     // count=15
-    const url = `https://api.twitter.com/1.1/search/tweets.json?q=${text}&lang=en&tweet_mode=extended&count=30`;
+    const url = `https://api.twitter.com/1.1/search/tweets.json?q=${text}&lang=en&tweet_mode=extended&count=100`;
 
     const headers = {
       Authorization: `Bearer ${token}`
