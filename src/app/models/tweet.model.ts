@@ -188,6 +188,7 @@ export interface TweetModel {
   id: number;
   id_str: string;
   text: string;
+  full_text: string;
   truncated: boolean;
   entities: Entities;
   metadata: Metadata;

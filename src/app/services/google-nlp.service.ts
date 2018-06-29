@@ -15,7 +15,11 @@ export class GoogleNLPService {
 
   analyzeTweet(tweet: TweetModel) {
     const sentimentRequest: SentimentRequestModel = {
-      document: { content: tweet.text, type: 'PLAIN_TEXT', language: 'en' },
+      document: {
+        content: tweet.full_text,
+        type: 'PLAIN_TEXT',
+        language: 'en'
+      },
       encodingType: 'UTF8'
     };
 
