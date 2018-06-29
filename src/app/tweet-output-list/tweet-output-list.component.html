@@ -1,4 +1,4 @@
-<div>{{title}}</div>
+<h3>{{title}}</h3>
 <mat-list>
   <mat-list-item *ngFor="let tweet of tweetArray">
     <app-tweet-card [tweet]="tweet.tweet" [score]="tweet.res.documentSentiment.score"></app-tweet-card>
