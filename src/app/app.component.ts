@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TwitterService } from './services/twitter.service';
 import { from, Observable } from 'rxjs';
-import {filter, flatMap, scan} from 'rxjs/operators';
+import { filter, flatMap, scan, tap, map } from 'rxjs/operators';
 import { GoogleNLPService } from './services/google-nlp.service';
 import { TweetModel } from './models/tweet.model';
 
@@ -12,7 +12,7 @@ import { TweetModel } from './models/tweet.model';
 })
 export class AppComponent implements OnInit {
   title = 'WIPM';
-  tweets$: Observable<TweetModel[]>;
+  tweets$: Observable<any>;
   positiveTweets$: Observable<any>;
   neagativeTweets$: Observable<any>;
 
@@ -21,18 +21,23 @@ export class AppComponent implements OnInit {
     private languageService: GoogleNLPService
   ) {}
 
-  ngOnInit(): void {
-
-
-  }
+  ngOnInit(): void {}
 
   getTweets(searchTerm: string) {
     this.tweets$ = this.twitterService.getTweets(searchTerm).pipe(
       flatMap(arrayValue => from(arrayValue)),
       flatMap(singleTweet => this.languageService.analyzeTweet(singleTweet)),
-      scan((tweetsList, tweet) => [...tweetsList, tweet], [])
+      scan((tweetsList, tweet, index) => [...tweetsList, tweet], [])
     );
-    this.positiveTweets$ = this.tweets$.pipe(filter(({res}) => res.documentSentiment.score > 0 ));
-    this.neagativeTweets$ = this.tweets$.pipe(filter(({res}) => res.documentSentiment.score < 0 ));
+
+    this.positiveTweets$ = this.tweets$.pipe(
+      map(arr => arr.filter(el => el.res.documentSentiment.score > 0))
+      // filter(({ res }) => res.documentSentiment.score > 0)
+    );
+
+    this.neagativeTweets$ = this.tweets$.pipe(
+      map(arr => arr.filter(el => el.res.documentSentiment.score < 0))
+      // filter(({ res }) => res.documentSentiment.score < 0)
+    );
   }
 }
