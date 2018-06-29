@@ -1,23 +1,23 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div fxLayout="column" class="bigger">
+<div fxLayout="column" class="bigger" class="mat-typography">
   <header>
-  <div fxLayoutAlign="start center" fxLayout="column">
-    <h1 class="mat-h1">
-     WIPM
-    </h1>
-    <h2>
-      What's in peoples minds
-    </h2>
-  </div>
-</header>
+    <div fxLayoutAlign="start center" fxLayout="column">
+      <h1 class="mat-h1">
+        WIPM
+      </h1>
+      <h2 class="mat-h2">
+        What's in peoples minds
+      </h2>
+    </div>
+  </header>
 
-  <app-input (textChanger)="getTweets($event)" fxLayout="row"> </app-input>
+  <app-input (textChanger)="getTweets($event)" fxLayoutAlign="start center" fxLayout="column"> </app-input>
 
-  <div fxLayout="row">
-    <app-tweet-output-list title="Positive Tweets" [tweetArray]="positiveTweets$ | async">
+  <div fxLayout="row" class="margin-top-20">
+    <app-tweet-output-list title="Positive Tweets" fxFlex="grow" [tweetArray]="positiveTweets$ | async">
     </app-tweet-output-list>
 
-    <app-tweet-output-list title="Negative Tweets" [tweetArray]="neagativeTweets$ | async">
+    <app-tweet-output-list title="Negative Tweets" fxFlex="grow" [tweetArray]="neagativeTweets$ | async">
     </app-tweet-output-list>
   </div>
 </div>
