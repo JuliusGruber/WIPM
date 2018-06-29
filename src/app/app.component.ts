@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TwitterService } from './services/twitter.service';
+import {Observable} from 'rxjs';
+import TweetModel = namespace.TweetModel;
 
 @Component({
   selector: 'app-root',
@@ -8,13 +10,13 @@ import { TwitterService } from './services/twitter.service';
 })
 export class AppComponent implements OnInit {
   title = 'WIPM';
-  tweets$;
+  tweets$: Observable<TweetModel>;
 
   constructor(private twitterService: TwitterService) {}
 
   ngOnInit(): void {}
 
-  getTweets() {
-    this.tweets$ = this.twitterService.getTweets('Trump');
+  getTweets(searchTerm: string) {
+    this.tweets$ = this.twitterService.getTweets(searchTerm);
   }
 }
