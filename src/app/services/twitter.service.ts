@@ -4,6 +4,11 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 const encodedBearer =
   'bmlTdWJGS2J6QXkwblIzTTFJNndKY2h5SzprRE16cmhub3d6NXhUSlQyamlhM25ncW9ZZ2FGMUk1QzZmTlRYVGVNUFc1Tzk5eFpEZA==';
 
+export interface TwitterResponse {
+  access_token: string;
+  token_type: string;
+}
+
 @Injectable()
 export class TwitterService {
   twitterEndpoint = 'https://api.twitter.com/';
@@ -11,7 +16,9 @@ export class TwitterService {
   authToken;
 
   constructor(private http: HttpClient) {
-    this.getAuthToken().subscribe(token => (this.authToken = token));
+    this.getAuthToken().subscribe(
+      token => (this.authToken = token.access_token)
+    );
   }
 
   getAuthToken() {
@@ -24,7 +31,7 @@ export class TwitterService {
       })
     };
 
-    return this.http.post(
+    return this.http.post<TwitterResponse>(
       authEndpoint,
       'grant_type=client_credentials',
       httpOptions
