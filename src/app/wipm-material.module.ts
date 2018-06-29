@@ -1,15 +1,21 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import {MatInputModule, MatListModule, MatToolbarModule} from '@angular/material';
 
+import {
+  MatInputModule,
+  MatListModule,
+  MatToolbarModule,
+  MatCardModule,
+  MatGridListModule
+} from '@angular/material';
 
 @NgModule({
-  exports : [
+  exports: [
     MatInputModule,
     MatToolbarModule,
-    MatListModule
-
+    MatListModule,
+    MatCardModule,
+    MatGridListModule
   ],
   declarations: []
 })
-export class WIPMMaterialModule { }
+export class WIPMMaterialModule {}
