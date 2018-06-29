@@ -8,9 +8,11 @@ import { InputComponent } from './input/input.component';
 import {WIPMMaterialModule} from './wipm-material.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {GoogleNLPService} from './services/google-nlp.service';
+import {TweetOutputListComponent} from './tweet-output-list/tweet-output-list.component';
+import {TweetCardComponent} from './tweet-card/tweet-card.component';
 
 @NgModule({
-  declarations: [AppComponent, InputComponent],
+  declarations: [AppComponent, InputComponent, TweetOutputListComponent, TweetCardComponent],
   imports: [BrowserModule, HttpClientModule, WIPMMaterialModule, BrowserAnimationsModule],
   providers: [TwitterService, GoogleNLPService],
   bootstrap: [AppComponent]

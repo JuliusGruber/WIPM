@@ -11,6 +11,9 @@
 
 
 
+<app-tweet-output-list title="Positive Tweets" [tweetArray]="positiveTweets$ | async"></app-tweet-output-list>
+<app-tweet-output-list title="Negative Tweets" [tweetArray]="neagativeTweets$ | async"></app-tweet-output-list>
+
 <ul>
   <li *ngFor="let tweet of tweets$ | async">
     {{ tweet | json}}
