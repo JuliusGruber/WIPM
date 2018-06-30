@@ -71,3 +71,12 @@ mwl-gauge > .gauge > .value-text {
   height: 100%;
   background-color: rgba(0,0,0,0.3);
 }
+
+
+.copy-link {
+  text-decoration: none;
+  top: 85px;
+  color: #aaaaaa;
+  right: 10px;
+  position: absolute;
+}

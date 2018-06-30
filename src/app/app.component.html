@@ -6,6 +6,7 @@
           What's in peoples minds
       </h1>
     </div>
+    <a href="#" *ngIf="searchTerm" (click)="copyLink()" class="copy-link">Copy link</a>
   </header>
 
   <app-input (textChanger)="getTweets($event)" fxLayoutAlign="start center" fxLayout="column"> </app-input>
