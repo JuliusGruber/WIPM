@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { TweetModel } from '../models/tweet.model';
 
@@ -37,6 +37,9 @@ export class TwitterService {
           }
         }
       )
-      .pipe(map(v => JSON.parse(v).statuses));
+      .pipe(
+        map(v => JSON.parse(v).statuses)
+        // tap(console.log)
+      );
   }
 }

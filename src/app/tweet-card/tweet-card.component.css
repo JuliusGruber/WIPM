@@ -1,3 +1,7 @@
 mat-card {
   margin: 5px 0px;
 }
+
+.example-header-image {
+  background-size: cover;
+}

@@ -10,7 +10,8 @@
 
   <app-input (textChanger)="getTweets($event)" fxLayoutAlign="start center" fxLayout="column"> </app-input>
 
-  <div class="margin-top-20" fxLayoutAlign="start center" fxLayout="column">
+  <!-- <div class="margin-top-20" fxLayoutAlign="start center" fxLayout="column">
+    <p>Overall score</p>
       <mwl-gauge
       #gauge
       [max]="100"
@@ -23,7 +24,7 @@
       [animationDuration]="1"
       >
     </mwl-gauge>
-  </div>
+  </div> -->
 
   <div fxLayout="row" class="margin-top-20">
     <app-tweet-output-list title="Positive Tweets" fxFlex="grow" [tweetArray]="positiveTweets$ | async">
