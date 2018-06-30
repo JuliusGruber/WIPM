@@ -34,3 +34,10 @@
     </app-tweet-output-list>
   </div>
 </div>
+
+<mat-progress-spinner
+        *ngIf="showSpinner$ | async"
+        class="loading"
+        color="mat-primary"
+        mode="indeterminate">
+</mat-progress-spinner>

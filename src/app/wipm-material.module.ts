@@ -6,7 +6,8 @@ import {
   MatToolbarModule,
   MatCardModule,
   MatGridListModule,
-  MatBadgeModule
+  MatBadgeModule,
+  MatProgressSpinnerModule
 } from '@angular/material';
 
 @NgModule({
@@ -16,7 +17,8 @@ import {
     MatListModule,
     MatCardModule,
     MatGridListModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatProgressSpinnerModule
   ],
   declarations: []
 })
