@@ -37,11 +37,17 @@ exports.getTweets = functions.https.onRequest((request, response) => {
         const text = request.query.text;
         console.log('Token: ', token);
         console.log('Text: ', text);
-        // count=15
-        const url = `https://api.twitter.com/1.1/search/tweets.json?q=${text}&lang=en&tweet_mode=extended&count=100`;
+        let url = '';
+        if (text.startsWith('@')) {
+            url = `https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=${text.substr(1)}&tweet_mode=extended&count=100`;
+        }
+        else {
+            url = `https://api.twitter.com/1.1/search/tweets.json?q=${text}&lang=en&tweet_mode=extended&count=100`;
+        }
         const headers = {
             Authorization: `Bearer ${token}`
         };
+        console.log(url);
         reqApi.get({
             headers,
             url

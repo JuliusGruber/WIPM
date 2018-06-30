@@ -51,6 +51,10 @@ export class AppComponent implements OnInit {
   }
 
   getTweets(searchTerm: string) {
+    if (!searchTerm) {
+      return;
+    }
+
     this.tweets$ = this.twitterService.getTweets(searchTerm).pipe(
       flatMap(arrayValue => from(arrayValue)),
       flatMap(singleTweet => this.languageService.analyzeTweet(singleTweet)),
