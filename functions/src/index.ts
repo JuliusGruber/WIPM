@@ -36,6 +36,45 @@ export const getAuthToken = functions.https.onRequest((request, response) => {
   });
 });
 
+export const getTrends =  functions.https.onRequest((request, response) => {
+  cors(request, response, () => {
+    const token = request.query.token;
+    const topic = request.query.topic;
+
+    console.log('Token: ', token);
+    console.log('Text: ', topic);
+
+    // count=15
+
+    const url = `https://api.twitter.com/1.1/trends/place.json?id=1`;
+
+    const headers = {
+      Authorization: `Bearer ${token}`
+    };
+
+    reqApi.get(
+      {
+        headers,
+        url
+      },
+      (err, res, twResponse) => {
+        console.log('handle response...');
+        if (err) {
+          response.json(err);
+        } else {
+          response.json(twResponse);
+        }
+      }
+    );
+  });
+});
+
+
+
+
+
+
+
 export const getTweets = functions.https.onRequest((request, response) => {
   cors(request, response, () => {
     const token = request.query.token;

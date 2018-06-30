@@ -45,4 +45,26 @@ export class TwitterService {
         map(v => (v.statuses ? v.statuses : v))
       );
   }
+
+  getTrendingTopics(countryName: string): Observable<any> {
+    console.log('twitter service getTrendingTopics() called with: ' + countryName);
+    if (!this.authToken) {
+      console.error('No Auth token!!!');
+      return;
+    }
+    return this.http
+      .get<string>(
+        'https://us-central1-wipm-2b676.cloudfunctions.net/getTrends',
+        {
+          params: {
+            token: this.authToken
+            //text: text
+          }
+        }
+      )
+      .pipe(
+        map(v => JSON.parse(v).statuses)
+        // tap(console.log)
+      );
+  }
 }

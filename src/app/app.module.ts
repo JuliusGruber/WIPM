@@ -13,8 +13,6 @@ import { TweetOutputListComponent } from './tweet-output-list/tweet-output-list.
 import { TweetCardComponent } from './tweet-card/tweet-card.component';
 
 import { GaugeModule } from 'angular-gauge';
-import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
