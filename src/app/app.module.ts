@@ -13,13 +13,15 @@ import { TweetOutputListComponent } from './tweet-output-list/tweet-output-list.
 import { TweetCardComponent } from './tweet-card/tweet-card.component';
 
 import { GaugeModule } from 'angular-gauge';
+import {GeoLocationComponent} from './geo-location/geo-location.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     InputComponent,
     TweetOutputListComponent,
-    TweetCardComponent
+    TweetCardComponent,
+    GeoLocationComponent
   ],
   imports: [
     BrowserModule,

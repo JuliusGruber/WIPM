@@ -57,13 +57,13 @@ export class TwitterService {
         'https://us-central1-wipm-2b676.cloudfunctions.net/getTrends',
         {
           params: {
-            token: this.authToken
-            //text: text
+            token: this.authToken,
+            topic: countryName
           }
         }
       )
       .pipe(
-        map(v => JSON.parse(v).statuses)
+        map(v => JSON.parse(v))
         // tap(console.log)
       );
   }

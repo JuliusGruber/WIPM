@@ -29,12 +29,15 @@ export class GeoLocationComponent implements OnInit {
       this.fullgeoURL = this.geoURL + this.ipAddress['ip'] + this.geoAPIkey;
       console.log(this.fullgeoURL);
       return  this.httpClient.get(this.fullgeoURL);
-    })).subscribe(data => {this.country_name = data['country_name']
-      this.twitterService.getTrendingTopics(this.country_name);
-    });
+    }),
+      switchMap(data => {this.country_name = data['country_name'];
+        return this.twitterService.getTrendingTopics(this.country_name); } )
 
 
-    //this.twitterService.getTrendingTopics(this.country_name);
+      ).subscribe(console.log);
+
+
+
 
 
 
