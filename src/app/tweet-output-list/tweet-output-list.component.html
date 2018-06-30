@@ -2,6 +2,9 @@
 <h3 matBadge="{{tweetArray?.length}}" matBadgeOverlap="false" matBadgePosition="above before">{{title}}</h3>
 <mat-list>
   <mat-list-item *ngFor="let tweet of tweetArray" style="height: auto">
-    <app-tweet-card [tweet]="tweet.tweet" [score]="tweet.res.documentSentiment.score"></app-tweet-card>
+    <app-tweet-card
+      style="width: 100%"
+      [tweet]="tweet.tweet"
+      [score]="tweet.res.documentSentiment.score"></app-tweet-card>
   </mat-list-item>
 </mat-list>
