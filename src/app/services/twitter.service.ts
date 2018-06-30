@@ -1,17 +1,20 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, tap } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { TweetModel } from '../models/tweet.model';
 
 @Injectable()
 export class TwitterService {
   authToken: string;
 
+  tokenReceived$ = new Subject<boolean>();
+
   constructor(private http: HttpClient) {
     this.getAuthToken().subscribe(token => {
       console.log('Token received!', token);
       this.authToken = JSON.parse(token).access_token;
+      this.tokenReceived$.next(true);
     });
   }
 
