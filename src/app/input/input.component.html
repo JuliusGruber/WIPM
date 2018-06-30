@@ -1,5 +1,6 @@
 <mat-toolbar>
-  <mat-form-field>
-    <input matInput placeholder="Enter search term" (input)="terms$.next($event.target.value)">
+  <mat-form-field style="width: 100%">
+    <input matInput placeholder="Enter search term (like a word or user handle)"
+          (input)="terms$.next($event.target.value)">
   </mat-form-field>
 </mat-toolbar>

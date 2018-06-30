@@ -41,8 +41,8 @@ export class TwitterService {
         }
       )
       .pipe(
-        map(v => JSON.parse(v).statuses)
-        // tap(console.log)
+        map(v => JSON.parse(v)),
+        map(v => (v.statuses ? v.statuses : v))
       );
   }
 }
